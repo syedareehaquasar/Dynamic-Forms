@@ -5,24 +5,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateFormComponent } from './components/create-form/create-form.component';
-import { ListGroupsComponent } from './components/list-groups/list-groups.component';
-import { ListChecklistComponent } from './components/list-checklist/list-checklist.component';
-import { ListGroupPropertiesComponent } from './components/list-group-properties/list-group-properties.component';
-import { ListPicturesComponent } from './components/list-pictures/list-pictures.component';
+import { CheckListComponent } from './components/check-list/check-list.component';
+import { GroupComponent } from './components/group/group.component';
+import { GroupPropoertyComponent } from './components/group-propoerty/group-propoerty.component';
+import { PictureComponent } from './components/picture/picture.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateFormComponent,
-    ListGroupsComponent,
-    ListChecklistComponent,
-    ListGroupPropertiesComponent,
-    ListPicturesComponent
+    CheckListComponent,
+    GroupComponent,
+    GroupPropoertyComponent,
+    PictureComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
