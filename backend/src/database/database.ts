@@ -3,14 +3,12 @@ import * as Mongoose from "mongoose";
 let database: Mongoose.Connection;
 
 export const connect = () => {
-
-  const uri = "mongodb+srv://formdata:mama%40123@cluster0.ad708cn.mongodb.net/?retryWrites=true&w=majority";
   
   if (database) {
     return;
   }
 
-  Mongoose.connect(uri);
+  Mongoose.connect(process.env.URI);
 
   database = Mongoose.connection;
 

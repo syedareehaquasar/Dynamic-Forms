@@ -1,6 +1,12 @@
 import * as express from "express";
+import * as dotenv from "dotenv";
 import { connect } from "./database/database";
-import routes from './routes';
+import routes from "./routes";
+
+const dotenvResult = dotenv.config({ path: __dirname + "/.env" });
+if (dotenvResult.error) {
+  throw dotenvResult.error;
+}
 
 const app = express();
 const port = 5002;
