@@ -16,25 +16,25 @@ export class GroupComponent implements OnInit {
   ngOnInit(): void {
     this.form.getAllGroups().toPromise().then((group) => {
       Object(group).map((item: any) => {
-        var data: string[][] = [];
+        var data: any = {};
         this.form.getGroupProperties(item._id).toPromise().then((gp) => {
           var gps: string[] = [];
           Object(gp).map((item: any) => gps.push(item.propertyName));
-          data.push(gps);
+          data["groupProperty"] = gps;
         });
         this.form.getGroupCheckList(item._id).toPromise().then((cl) => {
           var cls: string[] = [];
           Object(cl).map((item: any) => cls.push(item.checkListName));
-          data.push(cls);
+          data["checkList"] = cls;
         });
         this.form.getGroupPictures(item._id).toPromise().then((pic) => {
           var pics: string[] = [];
           Object(pic).map((item: any) => pics.push(item.path));
-          data.push(pics);
+          data["picture"] = pics;
         });
-        console.log(typeof(data));
+        console.log(data);
         this.formData[item._id] = data;
-        console.log(Object(this.formData)[item._id]);
+        console.log(this.formData[item._id]);
       });
       console.log(this.formData);
       this.groupData = group;
