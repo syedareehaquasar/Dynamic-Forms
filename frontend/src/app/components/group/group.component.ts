@@ -19,17 +19,17 @@ export class GroupComponent implements OnInit {
       res.map((item: any) => {
         var data: any = [];
         this.form.getGroupProperties(item._id).subscribe((gp) => {
-          var gps: any = [];
+          var gps: string[] = [];
           console.log(Object.values(gp).map((item: any) => gps.push(item.propertyName)));
           data.push(gps);
         });
         this.form.getGroupCheckList(item._id).subscribe((cl) => {
-          var cls: any = [];
+          var cls: string[] = [];
           console.log(Object.values(cl).map((item: any) => cls.push(item.checkListName)));
           data.push(cls);
         });
         this.form.getGroupPictures(item._id).subscribe((pic) => {
-          var pics: any = [];
+          var pics: string[] = [];
           console.log(Object.values(pic).map((item: any) => pics.push(item.path)));
           data.push(pics);
         });

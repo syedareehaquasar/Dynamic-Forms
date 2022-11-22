@@ -11,10 +11,11 @@
       <tr *ngFor="let item of groupData">
         <th scope="row">{{item._id}}</th>
         <td>{{item.groupName}}
-          <tr>
-            <td>{{formData[item.id]}}</td>
-            <td>{{formData[item.id]}}</td>
-            <td>{{formData[item.id]}}</td>
+          <tr *ngFor="let ele of formData[item.id]">
+            ele
+            <td>{{ele[0]}}</td>
+            <td>{{ele[1]}}</td>
+            <td>{{ele[2]}}</td>
           </tr>
         </td>
       </tr>
