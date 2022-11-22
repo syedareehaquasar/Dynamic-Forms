@@ -11,12 +11,12 @@
       <tr *ngFor="let item of groupData">
         <th scope="row">{{item._id}}</th>
         <td>{{item.groupName}}
-      <tr>
-        <td *ngFor="let gp of groupData">1</td>
-        <td *ngFor="let cl of groupData">2</td>
-        <td *ngFor="let pic of groupData">3</td>
-      </tr>
-      </td>
+          <tr>
+            <td>{{formData[item.id]}}</td>
+            <td>{{formData[item.id]}}</td>
+            <td>{{formData[item.id]}}</td>
+          </tr>
+        </td>
       </tr>
     </tbody>
   </table>
