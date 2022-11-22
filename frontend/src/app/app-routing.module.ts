@@ -14,7 +14,7 @@ const routes: Routes = [
     component: CheckListComponent
   },
   {
-    path: 'group',
+    path: '',
     component: GroupComponent
   }
 ];

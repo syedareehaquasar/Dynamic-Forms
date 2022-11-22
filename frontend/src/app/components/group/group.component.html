@@ -1,23 +1,39 @@
-<div class="container">
-  <h2>Group Data</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Group Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of groupData">
-        <th scope="row">{{item._id}}</th>
-        <td>{{item.groupName}}
-          <tr *ngFor="let ele of formData[item.id]">
-            <td *ngFor="let gp of ele[0]">{{gp}}</td>
-            <td *ngFor="let cl of ele[1]">{{cl}}</td>
-            <td *ngFor="let p of ele[2]">{{p}}</td>
-          </tr>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<h1>Reactive Forms</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Groups</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" *ngFor="let item of groupData">
+      <li class="nav-item"><a class="nav-link">{{item.groupName}}</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="item-center">
+  <form *ngFor="let item of groupData" class="justify-content-center">
+    <div class="form-row d-flex p-2" *ngFor="let gp of groupPropertyData[item._id]">
+      <div class="form-group col-md-4 d-flex justify-content-between">
+        <label>{{gp.propertyName}}</label>
+        <div class="form-group" *ngFor="let cl of checkListData[gp._id]">
+          <div class="justify-content-center item-center d-flex">
+            <input class="form-check-input large" type="checkbox">
+          </div>
+          <br>
+          <div class="justify-content-center item-center d-flex">
+            <label class="form-check-label">
+              {{cl}}
+            </label>
+          </div>
+        </div>
+        <div class="form-group col-md-4" *ngFor="let p of pictureData[gp._id]">
+          <label>{{p}}</label>
+          <input type="text" class="form-control" placeholder="Picture Path">
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <br><br><br><br>
+  </form>
 </div>

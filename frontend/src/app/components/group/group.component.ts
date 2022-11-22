@@ -7,37 +7,51 @@ import { FormService } from '../../form.service';
   styleUrls: ['./group.component.css'],
 })
 export class GroupComponent implements OnInit {
-
   constructor(private form: FormService) {}
 
   groupData: any = [];
-  formData: any = {};
+  groupPropertyData: any = {};
+  checkListData: any = {};
+  pictureData: any = {};
 
   ngOnInit(): void {
-    this.form.getAllGroups().toPromise().then((group) => {
-      Object(group).map((item: any) => {
-        var data: any = {};
-        this.form.getGroupProperties(item._id).toPromise().then((gp) => {
-          var gps: string[] = [];
-          Object(gp).map((item: any) => gps.push(item.propertyName));
-          data["groupProperty"] = gps;
+    this.form
+      .getAllGroups()
+      .toPromise()
+      .then((group) => {
+        Object(group).map((g: any) => {
+          this.form
+            .getGroupProperties(g._id)
+            .toPromise()
+            .then((gp) => {
+              this.groupPropertyData[g._id] = [];
+              Object(gp).map((gp_ele: any) => {
+                this.pictureData[gp_ele._id] = [];
+                this.checkListData[gp_ele._id] = [];
+                this.groupPropertyData[g._id].push(gp_ele);
+                this.form
+                  .getGroupCheckList(gp_ele._id)
+                  .toPromise()
+                  .then((cl) => {
+                    Object(cl).map((item: any) =>
+                      this.checkListData[gp_ele._id].push(item.checkListName)
+                    );
+                  });
+                this.form
+                  .getGroupPictures(gp_ele._id)
+                  .toPromise()
+                  .then((pic) => {
+                    Object(pic).map((item: any) =>
+                      this.pictureData[gp_ele._id].push(item.path)
+                    );
+                  });
+                });
+                console.log(Object(this.pictureData));
+            });
+
+          console.log(Object.values(this.groupPropertyData));
         });
-        this.form.getGroupCheckList(item._id).toPromise().then((cl) => {
-          var cls: string[] = [];
-          Object(cl).map((item: any) => cls.push(item.checkListName));
-          data["checkList"] = cls;
-        });
-        this.form.getGroupPictures(item._id).toPromise().then((pic) => {
-          var pics: string[] = [];
-          Object(pic).map((item: any) => pics.push(item.path));
-          data["picture"] = pics;
-        });
-        console.log(data);
-        this.formData[item._id] = data;
-        console.log(this.formData[item._id]);
+        this.groupData = group;
       });
-      console.log(this.formData);
-      this.groupData = group;
-    });
   }
 }
