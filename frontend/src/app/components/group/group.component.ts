@@ -17,7 +17,7 @@ export class GroupComponent implements OnInit {
     this.form.getAllGroups().subscribe((group) => {
       const res = Object.values(group);
       res.map((item: any) => {
-        var data: any = [];
+        var data: string[][] = [];
         this.form.getGroupProperties(item._id).subscribe((gp) => {
           var gps: string[] = [];
           Object.values(gp).map((item: any) => gps.push(item.propertyName));
@@ -34,6 +34,7 @@ export class GroupComponent implements OnInit {
           data.push(pics);
         });
         this.formData[item._id] = data;
+        console.log(this.formData[item._id]);
       });
       console.log(this.formData);
       this.groupData = group;
