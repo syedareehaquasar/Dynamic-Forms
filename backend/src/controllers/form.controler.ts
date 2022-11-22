@@ -105,7 +105,7 @@ export var getCheckList = async (req, res) => {
 export var getGroupbyID = async (req, res) => {
   const _id = req.params.id;
   try {
-    const groupExist = await group.findOne({ _id });
+    const groupExist = await group.find({ _id });
     if (groupExist) {
       return res.status(200).json(groupExist);
     } else {
@@ -119,7 +119,7 @@ export var getGroupbyID = async (req, res) => {
 export var getGroupPropertybyID = async (req, res) => {
   const _id = req.params.id;
   try {
-    const groupPExist = await groupProperty.findOne({ _id });
+    const groupPExist = await groupProperty.find({ groupId: _id });
     if (groupPExist) {
       return res.status(200).json(groupPExist);
     } else {
@@ -133,7 +133,7 @@ export var getGroupPropertybyID = async (req, res) => {
 export var getPicturebyID = async (req, res) => {
   const _id = req.params.id;
   try {
-    const picExist = await picture.findOne({ _id });
+    const picExist = await picture.find({ groupId: _id });
     if (picExist) {
       return res.status(200).json(picExist);
     } else {
@@ -147,7 +147,7 @@ export var getPicturebyID = async (req, res) => {
 export var getCheckListbyID = async (req, res) => {
   const _id = req.params.id;
   try {
-    const clExist = await checkList.findOne({ _id });
+    const clExist = await checkList.find({ groupId: _id });
     if (clExist) {
       return res.status(200).json(clExist);
     } else {

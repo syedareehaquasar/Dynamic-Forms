@@ -1,1 +1,23 @@
-<p>group works!</p>
+<div class="container">
+  <h2>Group Data</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Group Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of groupData">
+        <th scope="row">{{item._id}}</th>
+        <td>{{item.groupName}}
+      <tr>
+        <td *ngFor="let gp of groupData">1</td>
+        <td *ngFor="let cl of groupData">2</td>
+        <td *ngFor="let pic of groupData">3</td>
+      </tr>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

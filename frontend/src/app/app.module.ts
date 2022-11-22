@@ -10,6 +10,7 @@ import { GroupComponent } from './components/group/group.component';
 import { GroupPropoertyComponent } from './components/group-propoerty/group-propoerty.component';
 import { PictureComponent } from './components/picture/picture.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
