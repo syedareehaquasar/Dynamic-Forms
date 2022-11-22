@@ -12,10 +12,9 @@
         <th scope="row">{{item._id}}</th>
         <td>{{item.groupName}}
           <tr *ngFor="let ele of formData[item.id]">
-            ele
-            <td>{{ele[0]}}</td>
-            <td>{{ele[1]}}</td>
-            <td>{{ele[2]}}</td>
+            <td *ngFor="let gp of ele[0]">{{gp}}</td>
+            <td *ngFor="let cl of ele[1]">{{cl}}</td>
+            <td *ngFor="let p of ele[2]">{{p}}</td>
           </tr>
         </td>
       </tr>
