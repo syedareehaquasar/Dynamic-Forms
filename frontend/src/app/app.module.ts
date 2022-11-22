@@ -7,8 +7,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateFormComponent } from './components/create-form/create-form.component';
 import { CheckListComponent } from './components/check-list/check-list.component';
 import { GroupComponent } from './components/group/group.component';
-import { GroupPropoertyComponent } from './components/group-propoerty/group-propoerty.component';
-import { PictureComponent } from './components/picture/picture.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -17,9 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     CreateFormComponent,
     CheckListComponent,
-    GroupComponent,
-    GroupPropoertyComponent,
-    PictureComponent
+    GroupComponent
   ],
   imports: [
     BrowserModule,
